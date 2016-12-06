@@ -21,7 +21,6 @@ export default {
   },
   data() {
     return {
-      active: false,
       artists: [
         {
           name: 'Kanye',
@@ -48,14 +47,6 @@ export default {
         },
       ],
     };
-  },
-  methods: {
-    showAlbums() {
-      this.active = true;
-    },
-    hideAlbums() {
-      this.active = false;
-    },
   },
   created() {
     if (process.env.NODE_ENV === 'testing') {
