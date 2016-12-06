@@ -1,69 +1,28 @@
 <style scoped>
-
 </style>
 
 <template>
-  <artists
-    :artists='artists'
-    :active='active'
-    :showAlbums='showAlbums'
-    :hideAlbums='hideAlbums'
-  >
-  </artists>
+  <ul v-if='active'>
+    <li v-for='(artist, index) in artists'>
+      <h3 @click='hideAlbums()'>{{artist.name}}<h3>
+        <ul class='album'>
+          <li v-for='(album, index) in artist.albums'>
+            {{album}}
+          </li>
+        </ul>
+    </li>
+  </ul>
+
+  <ul v-else>
+    <li v-for='(artist, index) in artists'>
+      <h3 @click='showAlbums()'>{{artist.name}}<h3>
+    </li>
+  </ul>
 </template>
 
 <script>
-import Artists from './Artists.vue';
 
-export default {
-  components: {
-    Artists,
-  },
-  data() {
-    return {
-      active: false,
-      artists: [
-        {
-          name: 'Kanye',
-          albums: [
-            'College Dropout',
-            'Late Registration',
-            'Graduation',
-          ],
-        },
-        {
-          name: 'Young Thug',
-          albums: [
-            'Slime Season',
-            'Slime Season 2',
-            'Slime Season 3',
-          ],
-        },
-        {
-          name: '21 Savage',
-          albums: [
-            'The Slaughter Tape',
-            'Savage Mode',
-          ],
-        },
-      ],
-    };
-  },
-  methods: {
-    showAlbums() {
-      this.active = true;
-    },
-    hideAlbums() {
-      this.active = false;
-    },
-  },
-  created() {
-    if (process.env.NODE_ENV === 'testing') {
-      this.$route = {
-        name: 'home-page',
-        path: '/home-page',
-      };
-    }
-  },
-};
+  export default {
+    props: ['artists', 'active', 'showAlbums', 'hideAlbums'],
+  };
 </script>

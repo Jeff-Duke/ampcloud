@@ -7,16 +7,16 @@
 
 <template>
   <div>
-    <artist-list><artist-list>
+    <sidebar><sidebar>
   </div>
 </template>
 
 <script>
-  import ArtistList from './SidebarView/ArtistList';
+  import Sidebar from './SidebarView/Sidebar';
 
   export default {
     components: {
-      ArtistList,
+      Sidebar,
     },
     name: 'home-page',
   };
