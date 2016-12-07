@@ -4,8 +4,9 @@
 
 <template>
   <ul>
+    <h1 class='title'>Your Playlist 💖</h1>
     <li v-for='track in playlistTracks'>
-      {{track.number}}: {{track.title}} -- {{track.length}}
+      {{track.number}}: {{track.title}} -- {{track.duration}}
     <li>
   </ul>
 </template>
