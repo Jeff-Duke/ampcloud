@@ -3,26 +3,19 @@
 
 <template>
   <section>
-    <h1><button @click='toggleAlbums'>📂</button> {{artist.name}}</h1>
+    <h1><button @click='toggleSongs'>📂</button> {{album.title}}</h1>
     <ul>
-      <li v-if="show === 'yes'" v-for='(album, index) in artist.albums'>
-        <album
-          :album='album'
-        >
-        </album>
+      <li v-if="show === 'yes'" v-for='(track, index) in album.tracks'>
+        {{track.title}}
       </li>
     </ul>
   </section>
 </template>
 
 <script>
-import Album from './Album';
 
 export default {
-  components: {
-    Album,
-  },
-  props: ['artist'],
+  props: ['album'],
   data() {
     return {
       showKey: {
@@ -33,7 +26,7 @@ export default {
     };
   },
   methods: {
-    toggleAlbums() {
+    toggleSongs() {
       this.showKey[this.show]();
     },
   },
