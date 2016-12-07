@@ -14,15 +14,14 @@
 
 <script>
 import ArtistList from './ArtistList';
-import helpers from './helpers';
 
 export default {
   components: {
     ArtistList,
   },
+  props: ['artists'],
   data() {
     return {
-      artists: helpers.artists,
     };
   },
   created() {

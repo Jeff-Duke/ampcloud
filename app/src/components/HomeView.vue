@@ -21,7 +21,9 @@
 <template>
   <div class='wrapper'>
   <section class='sidebar-container'>
-    <sidebar id='sidebar'></sidebar>
+    <sidebar id='sidebar'
+      :artists='artists'
+    ></sidebar>
   </section>
   <section class='playlist-editor-container'>
     <playlist-editor id='playlist-editor'></playlist-editor>
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+  import helpers from './SidebarView/helpers';
   import Sidebar from './SidebarView/Sidebar';
   import PlaylistEditor from './PlaylistEditorView/PlaylistEditor';
 
@@ -38,6 +41,15 @@
     components: {
       Sidebar,
       PlaylistEditor,
+    },
+    data() {
+      return {
+        playlistTracks: [],
+        artists: helpers.artists,
+      };
+    },
+    methods: {
+      // addToPlaylist function to find track and push to playlistTracks array
     },
     name: 'home-page',
   };
