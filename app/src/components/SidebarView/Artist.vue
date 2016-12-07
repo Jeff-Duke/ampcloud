@@ -6,7 +6,7 @@
     <h1><button @click='toggleAlbums'>📂</button> {{artist.name}}</h1>
     <ul>
       <li v-if="show === 'yes'" v-for='(album, index) in artist.albums'>
-        {{album}}
+        {{album.title}}
       </li>
     </ul>
   </section>

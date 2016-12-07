@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import ArtistList from './ArtistList.vue';
+import ArtistList from './ArtistList';
+import helpers from './helpers';
 
 export default {
   components: {
@@ -21,31 +22,7 @@ export default {
   },
   data() {
     return {
-      artists: [
-        {
-          name: 'Kanye',
-          albums: [
-            'College Dropout',
-            'Late Registration',
-            'Graduation',
-          ],
-        },
-        {
-          name: 'Young Thug',
-          albums: [
-            'Slime Season',
-            'Slime Season 2',
-            'Slime Season 3',
-          ],
-        },
-        {
-          name: '21 Savage',
-          albums: [
-            'The Slaughter Tape',
-            'Savage Mode',
-          ],
-        },
-      ],
+      artists: helpers.artists,
     };
   },
   created() {
