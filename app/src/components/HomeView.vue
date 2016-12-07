@@ -26,7 +26,10 @@
     ></sidebar>
   </section>
   <section class='playlist-editor-container'>
-    <playlist-editor id='playlist-editor'></playlist-editor>
+    <playlist-editor id='playlist-editor'
+      :playlistTracks='playlistTracks'
+    >
+    </playlist-editor>
   </section>
   </div>
 </template>
@@ -44,7 +47,7 @@
     },
     data() {
       return {
-        playlistTracks: [],
+        playlistTracks: helpers.artists[0].albums[0].tracks,
         artists: helpers.artists,
       };
     },

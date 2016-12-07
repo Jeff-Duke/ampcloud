@@ -3,16 +3,19 @@
 </style>
 
 <template>
-  <playlist></playlist>
+  <ul>
+    <li v-for='track in playlistTracks'>
+      {{track.number}}: {{track.title}} -- {{track.length}}
+    <li>
+  </ul>
 </template>
 
 <script>
-import Playlist from './Playlist';
 
 export default {
   components: {
-    Playlist,
   },
+  props: ['playlistTracks'],
   data() {
     return {
     };
