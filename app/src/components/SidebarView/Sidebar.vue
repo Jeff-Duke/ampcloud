@@ -1,23 +1,23 @@
 <style scoped>
-
 </style>
 
 <template>
-  <artist-list
-    :artists='artists'
-    :active='active'
-    :showAlbums='showAlbums'
-    :hideAlbums='hideAlbums'
-  >
-  </artist-list>
+  <ul>
+    <li v-for='(artist, index) in artists'>
+      <artist
+        :artist='artist'
+      >
+      </artist>
+    </li>
+  </ul>
 </template>
 
 <script>
-import ArtistList from './ArtistList';
+import Artist from './Artist';
 
 export default {
   components: {
-    ArtistList,
+    Artist,
   },
   props: ['artists'],
   data() {
