@@ -3,13 +3,15 @@
 </style>
 
 <template>
-  <h1>Working</h1>
+  <playlist></playlist>
 </template>
 
 <script>
+import Playlist from './Playlist';
 
 export default {
   components: {
+    Playlist,
   },
   data() {
     return {
