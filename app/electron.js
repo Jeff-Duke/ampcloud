@@ -1,12 +1,12 @@
-'use strict'
+'use strict';
 
-const electron = require('electron')
-const path = require('path')
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
+const electron = require('electron');
+const path = require('path');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 
-let mainWindow
-let config = {}
+let mainWindow;
+let config = {};
 
 if (process.env.NODE_ENV === 'development') {
   config = require('../config')
@@ -44,7 +44,12 @@ function createWindow () {
   console.log('mainWindow opened')
 }
 
-app.on('ready', createWindow)
+function playAudio(file) {
+
+}
+
+app.on('ready', createWindow);
+
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
