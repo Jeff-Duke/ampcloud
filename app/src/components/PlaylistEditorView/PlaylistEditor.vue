@@ -3,13 +3,15 @@
 </style>
 
 <template>
+  <div>
+  <h1 class='title'>Your Playlist 💖</h1>
   <ul>
-    <h1 class='title'>Your Playlist 💖</h1>
     <li v-for='song in playlistTracks'>
-      Artist: {{song.artist}} Album: {{song.album}}:
-      {{song.track.title}} -- {{song.track.duration}}
-    <li>
+      <b>Artist:</b> {{song.artist}} <b>Album:</b> {{song.album}}:
+      {{song.track.title}} -- {{renderDuration(song.track.duration)}}
+    </li>
   </ul>
+</div>
 </template>
 
 <script>
@@ -21,6 +23,19 @@ export default {
   data() {
     return {
     };
+  },
+  methods: {
+    renderDuration(duration) {
+      const durationInSeconds = parseInt(duration, 10);
+      const minutes = Math.floor(durationInSeconds / 60);
+      const seconds = durationInSeconds - (minutes * 60);
+      let time;
+
+      if (seconds < 10) { time = `${minutes}:0${seconds}`; }
+      if (seconds > 10) { time = `${minutes}:${seconds}`; }
+
+      return time;
+    },
   },
   created() {
     if (process.env.NODE_ENV === 'testing') {
