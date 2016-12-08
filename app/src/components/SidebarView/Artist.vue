@@ -6,16 +6,25 @@
     <h1><button @click='toggleAlbums'>📂</button> {{artist.name}}</h1>
     <ul>
       <li v-if="show === 'yes'" v-for='(album, index) in artist.albums'>
-        {{album}}
+        <album
+          :album='album'
+          :artistName='artist.name'
+          :addToPlaylist='addToPlaylist'
+        >
+        </album>
       </li>
     </ul>
   </section>
 </template>
 
 <script>
+import Album from './Album';
 
 export default {
-  props: ['artist'],
+  components: {
+    Album,
+  },
+  props: ['artist', 'addToPlaylist', 'index'],
   data() {
     return {
       showKey: {

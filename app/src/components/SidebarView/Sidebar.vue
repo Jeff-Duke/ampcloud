@@ -1,51 +1,28 @@
 <style scoped>
-
 </style>
 
 <template>
-  <artist-list
-    :artists='artists'
-    :active='active'
-    :showAlbums='showAlbums'
-    :hideAlbums='hideAlbums'
-  >
-  </artist-list>
+  <ul>
+    <li v-for='(artist, index) in artists'>
+      <artist
+        :artist='artist'
+        :addToPlaylist='addToPlaylist'
+      >
+      </artist>
+    </li>
+  </ul>
 </template>
 
 <script>
-import ArtistList from './ArtistList.vue';
+import Artist from './Artist';
 
 export default {
   components: {
-    ArtistList,
+    Artist,
   },
+  props: ['artists', 'addToPlaylist'],
   data() {
     return {
-      artists: [
-        {
-          name: 'Kanye',
-          albums: [
-            'College Dropout',
-            'Late Registration',
-            'Graduation',
-          ],
-        },
-        {
-          name: 'Young Thug',
-          albums: [
-            'Slime Season',
-            'Slime Season 2',
-            'Slime Season 3',
-          ],
-        },
-        {
-          name: '21 Savage',
-          albums: [
-            'The Slaughter Tape',
-            'Savage Mode',
-          ],
-        },
-      ],
     };
   },
   created() {
