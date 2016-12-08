@@ -1,7 +1,7 @@
 export default {
   artists: [
     {
-      name: 'Kanye',
+      name: 'Kanye West',
       albums: [
         {
           title: 'College Dropout',

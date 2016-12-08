@@ -8,6 +8,8 @@
       <li v-if="show === 'yes'" v-for='(album, index) in artist.albums'>
         <album
           :album='album'
+          :artistName='artist.name'
+          :addToPlaylist='addToPlaylist'
         >
         </album>
       </li>
@@ -22,7 +24,7 @@ export default {
   components: {
     Album,
   },
-  props: ['artist'],
+  props: ['artist', 'addToPlaylist', 'index'],
   data() {
     return {
       showKey: {

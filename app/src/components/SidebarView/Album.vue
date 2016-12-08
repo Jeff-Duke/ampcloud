@@ -5,7 +5,12 @@
   <section>
     <h1><button @click='toggleSongs'>📂</button> {{album.title}}</h1>
     <ul>
-      <li v-if="show === 'yes'" v-for='(track, index) in album.tracks'>
+      <li
+        class="track"
+        @click='addToPlaylist($event, artistName, album.title)' 
+        v-if="show === 'yes'"
+        v-for='(track, index) in album.tracks'
+      >
         {{track.title}}
       </li>
     </ul>
@@ -15,7 +20,7 @@
 <script>
 
 export default {
-  props: ['album'],
+  props: ['album', 'addToPlaylist', 'artistName'],
   data() {
     return {
       showKey: {

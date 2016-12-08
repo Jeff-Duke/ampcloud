@@ -5,8 +5,9 @@
 <template>
   <ul>
     <h1 class='title'>Your Playlist 💖</h1>
-    <li v-for='track in playlistTracks'>
-      {{track.number}}: {{track.title}} -- {{track.duration}}
+    <li v-for='song in playlistTracks'>
+      Artist: {{song.artist}} Album: {{song.album}}:
+      {{song.track.title}} -- {{song.track.duration}}
     <li>
   </ul>
 </template>

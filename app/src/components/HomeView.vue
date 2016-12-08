@@ -23,6 +23,8 @@
   <section class='sidebar-container'>
     <sidebar id='sidebar'
       :artists='artists'
+      :index='index'
+      :addToPlaylist='addToPlaylist'
     ></sidebar>
   </section>
   <section class='playlist-editor-container'>
@@ -47,12 +49,23 @@
     },
     data() {
       return {
-        playlistTracks: helpers.artists[0].albums[0].tracks,
+        playlistTracks: [],
         artists: helpers.artists,
       };
     },
     methods: {
-      // addToPlaylist function to find track and push to playlistTracks array
+      addToPlaylist(e, artistName, albumTitle) {
+        const trackTitle = e.target.innerText;
+        const artist = this.artists.find(artist => artist.name === artistName);
+        const album = artist.albums.find(album => album.title === albumTitle);
+        const track = album.tracks.find(track => track.title === trackTitle);
+        const song = {
+          artist: artistName,
+          album: albumTitle,
+          track };
+          
+        this.playlistTracks = [...this.playlistTracks, song];
+      },
     },
     name: 'home-page',
   };

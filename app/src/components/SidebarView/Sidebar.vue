@@ -6,6 +6,7 @@
     <li v-for='(artist, index) in artists'>
       <artist
         :artist='artist'
+        :addToPlaylist='addToPlaylist'
       >
       </artist>
     </li>
@@ -19,7 +20,7 @@ export default {
   components: {
     Artist,
   },
-  props: ['artists'],
+  props: ['artists', 'addToPlaylist'],
   data() {
     return {
     };
