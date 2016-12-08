@@ -8,8 +8,8 @@
 
   .sidebar-container {
     border-right: 1px solid black;
-    height: 90vh;
-    width: 25vw;
+    height: 100vh;
+    width: 275px;
   }
 
   .playlist-editor-container {
@@ -63,7 +63,7 @@
           artist: artistName,
           album: albumTitle,
           track };
-          
+
         this.playlistTracks = [...this.playlistTracks, song];
       },
     },
