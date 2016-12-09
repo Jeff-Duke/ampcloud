@@ -80,6 +80,7 @@
   },
   "dependencies": {
     "audio5": "^0.1.10",
+    "dataurl": "^0.1.0",
     "electron-prebuilt": "^1.4.11",
     "node-gyp": "^3.4.0",
     "node-soundcloud": "0.0.6",

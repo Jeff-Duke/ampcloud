@@ -5,8 +5,12 @@ const path = require('path');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
+const gimmeSong = global.gimmeSong = require('./gimme-song-url');
+
 let mainWindow;
 let config = {};
+
+app.commandLine.appendSwitch("js-flags", "--allow-running-insecure-content");
 
 if (process.env.NODE_ENV === 'development') {
   config = require('../config')
@@ -22,7 +26,9 @@ function createWindow () {
    */
   mainWindow = new BrowserWindow({
     height: 800,
-    width: 1200
+    width: 1200,
+    webSecurity: false,
+    experimentalFeatures: true
   })
 
   mainWindow.loadURL(config.url)
