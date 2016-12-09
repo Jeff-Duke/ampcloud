@@ -54,11 +54,15 @@
       };
     },
     methods: {
-      addToPlaylist(e, artistName, albumTitle) {
+      findTrack(e, artistName, albumTitle) {
         const trackTitle = e.target.innerText;
-        const artist = this.artists.find(artist => artist.name === artistName);
-        const album = artist.albums.find(album => album.title === albumTitle);
-        const track = album.tracks.find(track => track.title === trackTitle);
+        return this
+          .artists.find(artist => artist.name === artistName)
+          .albums.find(album => album.title === albumTitle)
+          .tracks.find(track => track.title === trackTitle);
+      },
+      addToPlaylist(e, artistName, albumTitle) {
+        const track = this.findTrack(e, artistName, albumTitle);
         const song = {
           artist: artistName,
           album: albumTitle,
