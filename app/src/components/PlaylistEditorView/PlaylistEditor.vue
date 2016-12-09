@@ -26,15 +26,11 @@ export default {
   },
   methods: {
     renderDuration(duration) {
-      const durationInSeconds = parseInt(duration, 10);
-      const minutes = Math.floor(durationInSeconds / 60);
-      const seconds = durationInSeconds - (minutes * 60);
-      let time;
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
 
-      if (seconds < 10) { time = `${minutes}:0${seconds}`; }
-      if (seconds > 10) { time = `${minutes}:${seconds}`; }
-
-      return time;
+      if (seconds < 10) return `${minutes}:0${seconds}`;
+      return `${minutes}:${seconds}`;
     },
   },
   created() {
