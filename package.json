@@ -1,7 +1,11 @@
 {
   "name": "amptron",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "An electron-vue project",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Jeff-Duke/amptron.git"
+  },
   "scripts": {
     "build": "node tasks/release.js",
     "build:clean": "cross-env PLATFORM_TARGET=clean node tasks/release.js",
@@ -20,7 +24,7 @@
     "vuex:module": "node tasks/vuex/module.js",
     "postinstall": "npm run lint:fix && cd app && npm install"
   },
-  "author": "Greg Holguin <simulatedgreg@gmail.com>",
+  "author": "Ben Godfrey and Jeff Duke",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.8.0",
@@ -74,5 +78,12 @@
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "audio5": "^0.1.10",
+    "dataurl": "^0.1.0",
+    "electron-prebuilt": "^1.4.11",
+    "node-gyp": "^3.4.0",
+    "node-soundcloud": "0.0.6",
+    "soundmanager2": "^2.97.20150601-a"
+  }
 }

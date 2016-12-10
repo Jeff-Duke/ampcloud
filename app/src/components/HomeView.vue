@@ -33,6 +33,9 @@
     >
     </playlist-editor>
   </section>
+  <section>
+    <player></player>
+  </section>
   </div>
 </template>
 
@@ -40,12 +43,14 @@
   import helpers from './SidebarView/helpers';
   import Sidebar from './SidebarView/Sidebar';
   import PlaylistEditor from './PlaylistEditorView/PlaylistEditor';
+  import Player from './PlayerView/Player';
 
 
   export default {
     components: {
       Sidebar,
       PlaylistEditor,
+      Player,
     },
     data() {
       return {
