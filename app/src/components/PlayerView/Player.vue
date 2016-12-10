@@ -21,14 +21,12 @@
   export default {
     methods: {
       nextTrack() {
-        console.log('nextTrack');
       },
       prevTrack() {
-        console.log('prevTrack');
       },
       loadTrack() {
         require('electron').remote.getGlobal('gimmeSong')((err, song) => {
-          document.getElementById('audio-player').src = song.toString();
+          document.getElementById('audio-player').src = song;
         });
       },
     },

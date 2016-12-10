@@ -10,8 +10,6 @@ const gimmeSong = global.gimmeSong = require('./gimme-song-url');
 let mainWindow;
 let config = {};
 
-app.commandLine.appendSwitch("js-flags", "--allow-running-insecure-content");
-
 if (process.env.NODE_ENV === 'development') {
   config = require('../config')
   config.url = `http://localhost:${config.port}`
