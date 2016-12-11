@@ -25,9 +25,7 @@ const mainProcess = remote.require(path.join(process.cwd(), 'app/electron.js'));
 export default {
   methods: {
     openFile() {
-      mainProcess.openFile((err, song) => {
-        document.getElementById('audio-player').src = song;
-      });
+      mainProcess.openFile();
     },
     nextTrack() {
     },

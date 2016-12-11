@@ -62,11 +62,7 @@ app.on('activate', () => {
 });
 
 const loadFile = exports.loadFile = (filePath, callback) => {
-  console.log('loadFile called from main process with filePath: ', filePath);
-  gimmeSong(filePath, (err, song) => {
-    if(err) callback(err);
-    callback(song);
-  });
+  gimmeSong(filePath, callback);
 };
 
 const openFile = exports.openFile = () => {

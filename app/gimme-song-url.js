@@ -2,6 +2,8 @@
 const dataurl = require('dataurl');
 const fs = require('fs');
 const id3 = require('id3js');
+const mp3Duration = require('mp3-duration');
+const PlayList = require('./src/components/SidebarView/PlayList');
 
 const gimmeSong = (filePath, callback) => {
   const track = {};
@@ -13,8 +15,15 @@ const gimmeSong = (filePath, callback) => {
         title,
         artist,
         album,
+        track: tags.v1.track,
       });
     }
+  });
+  mp3Duration(filePath, (err, duration) => {
+    if (err) console.log(err.message);
+    Object.assign(track, {
+      duration,
+    });
   });
   fs.readFile(filePath,
   (err, data) => {
@@ -23,8 +32,7 @@ const gimmeSong = (filePath, callback) => {
     Object.assign(track, {
       encoded,
     });
-    console.log(track);
-    // callback(null, track);
+    PlayList.push(track);
   });
 };
 

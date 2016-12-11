@@ -36,6 +36,7 @@
   <section>
     <player></player>
   </section>
+  <button @click='logPlaylist'>Whats in the playlist</button>
   </div>
 </template>
 
@@ -44,8 +45,7 @@
   import Sidebar from './SidebarView/Sidebar';
   import PlaylistEditor from './PlaylistEditorView/PlaylistEditor';
   import Player from './PlayerView/Player';
-
-
+  
   export default {
     components: {
       Sidebar,
