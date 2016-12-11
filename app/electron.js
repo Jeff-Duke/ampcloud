@@ -61,6 +61,14 @@ app.on('activate', () => {
   }
 });
 
+const loadFile = exports.loadFile = (filePath, callback) => {
+  console.log('loadFile called from main process with filePath: ', filePath);
+  gimmeSong(filePath, (err, song) => {
+    if(err) callback(err);
+    callback(song);
+  });
+};
+
 const openFile = exports.openFile = () => {
   const files = dialog.showOpenDialog({
     title: 'Open File',
@@ -72,8 +80,7 @@ const openFile = exports.openFile = () => {
 
   if (!files) { return; }
 
-  const file = files[0];
-  // const content = fs.readFileSync(files[0]).toString();
-
-  console.log(file);
+  const filePath = files[0];
+  loadFile(filePath);
 };
+

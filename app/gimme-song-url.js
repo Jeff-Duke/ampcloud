@@ -1,12 +1,30 @@
+'use strict';
 const dataurl = require('dataurl');
 const fs = require('fs');
+const id3 = require('id3js');
 
-const gimmeSong = (callback) => {
-  fs.readFile('/Users/Duke/turing/mod-4/projects/test-project/04-the_xx-islands.mp3',
+const gimmeSong = (filePath, callback) => {
+  const track = {};
+  id3({ file: filePath, type: id3.OPEN_LOCAL }, (err, tags) => {
+    if (err) { console.log(err); }
+    if (tags) {
+      const { title, album, artist } = tags;
+      Object.assign(track, {
+        title,
+        artist,
+        album,
+      });
+    }
+  });
+  fs.readFile(filePath,
   (err, data) => {
     if (err) { callback(err); }
     const encoded = dataurl.convert({ data, mimetype: 'audio/mp3' });
-    callback(null, encoded);
+    Object.assign(track, {
+      encoded,
+    });
+    console.log(track);
+    // callback(null, track);
   });
 };
 
