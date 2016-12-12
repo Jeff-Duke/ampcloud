@@ -8,7 +8,7 @@
   <ul>
     <li v-for='song in playlistTracks'>
       <b>Artist:</b> {{song.artist}} <b>Album:</b> {{song.album}}:
-      {{song.track.title}} -- {{renderDuration(song.track.duration)}}
+      {{song.title}} -- {{renderDuration(song.duration)}}
     </li>
   </ul>
 </div>

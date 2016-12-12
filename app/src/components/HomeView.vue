@@ -44,7 +44,9 @@
   import Sidebar from './SidebarView/Sidebar';
   import PlaylistEditor from './PlaylistEditorView/PlaylistEditor';
   import Player from './PlayerView/Player';
-  
+  import { remote } from 'electron';
+  const { PlayList } = remote.getGlobal('gimmeSong');
+
   export default {
     components: {
       Sidebar,
@@ -53,7 +55,7 @@
     },
     data() {
       return {
-        playlistTracks: [],
+        playlistTracks: PlayList,
         artists: helpers.artists,
       };
     },

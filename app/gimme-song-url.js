@@ -1,4 +1,3 @@
-'use strict';
 const dataurl = require('dataurl');
 const fs = require('fs');
 const id3 = require('id3js');
