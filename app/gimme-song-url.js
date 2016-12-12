@@ -1,9 +1,11 @@
-'use strict';
 const dataurl = require('dataurl');
 const fs = require('fs');
 const id3 = require('id3js');
 const mp3Duration = require('mp3-duration');
-const PlayList = require('./src/components/SidebarView/PlayList');
+const PlayList = require('./src/components/PlayerView/PlayList');
+const EventEmitter = require('events').EventEmitter;
+
+const server = new EventEmitter();
 
 const gimmeSongObject = (filePath) => {
   let track = {};
@@ -20,6 +22,7 @@ const gimmeSongObject = (filePath) => {
       });
     }
     PlayList.push(track);
+    server.emit('playlist-updated');
     track = {};
   });
   mp3Duration(filePath, (err, duration) => {
@@ -30,14 +33,13 @@ const gimmeSongObject = (filePath) => {
   });
 };
 
-const gimmeSong = (filePath, callback) => {
-  fs.readFile(filePath,
-  (err, data) => {
-    if (err) { callback(err); }
-    const encoded = dataurl.convert({ data, mimetype: 'audio/mp3' });
-    callback(null, encoded);
+const gimmeSong = (filePath) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, data) => {
+      if (err) { reject(err); }
+      resolve(dataurl.convert({ data, mimetype: 'audio/mp3' }));
+    });
   });
 };
 
-module.exports = gimmeSong;
-module.exports = gimmeSongObject;
+module.exports = { gimmeSong, gimmeSongObject };

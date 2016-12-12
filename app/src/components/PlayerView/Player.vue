@@ -21,6 +21,9 @@
 <script>
 import { remote } from 'electron';
 import path from 'path';
+
+const { gimmeSong } = remote.getGlobal('gimmeSong');
+const PlayList = require('./PlayList');
 const mainProcess = remote.require(path.join(process.cwd(), 'app/electron.js'));
 export default {
   methods: {
@@ -31,13 +34,15 @@ export default {
     },
     prevTrack() {
     },
-    loadTrack(filePath) {
-      // require('electron').remote.getGlobal('gimmeSong')((err, song) => {
-      //   document.getElementById('audio-player').src = song;
-      // });
-      mainProcess.gimmeSong(filePath, (err, song) => {
-        document.getElementById('audio-player').src = song;
-      });
+    loadTrack(index) {
+      index = 0;
+      const filePath = PlayList[index].filePath;
+      gimmeSong(filePath)
+        .then(song => {
+          document.getElementById('audio-player').src = song;
+          return song;
+        })
+        .catch(err => err);
     },
   },
 };
