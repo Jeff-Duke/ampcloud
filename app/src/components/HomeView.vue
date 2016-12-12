@@ -36,7 +36,6 @@
   <section>
     <player></player>
   </section>
-  <button @click='logPlaylist'>Whats in the playlist</button>
   </div>
 </template>
 

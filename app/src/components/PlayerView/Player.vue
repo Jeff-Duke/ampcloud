@@ -31,8 +31,11 @@ export default {
     },
     prevTrack() {
     },
-    loadTrack() {
-      require('electron').remote.getGlobal('gimmeSong')((err, song) => {
+    loadTrack(filePath) {
+      // require('electron').remote.getGlobal('gimmeSong')((err, song) => {
+      //   document.getElementById('audio-player').src = song;
+      // });
+      mainProcess.gimmeSong(filePath, (err, song) => {
         document.getElementById('audio-player').src = song;
       });
     },
