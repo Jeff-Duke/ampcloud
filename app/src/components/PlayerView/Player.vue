@@ -22,8 +22,7 @@
 import { remote } from 'electron';
 import path from 'path';
 
-const { gimmeSong } = remote.getGlobal('gimmeSong');
-const PlayList = require('./PlayList');
+const { gimmeSong, PlayList } = remote.getGlobal('gimmeSong');
 const mainProcess = remote.require(path.join(process.cwd(), 'app/electron.js'));
 export default {
   methods: {

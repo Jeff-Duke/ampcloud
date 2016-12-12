@@ -75,6 +75,6 @@ const openFile = exports.openFile = (callback) => {
   if (!files) { return; }
 
   const filePath = files[0];
-  gimmeSongObject(filePath, callback);
+  gimmeSongObject(filePath);
 };
 
