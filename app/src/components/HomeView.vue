@@ -44,8 +44,7 @@
   import Sidebar from './SidebarView/Sidebar';
   import PlaylistEditor from './PlaylistEditorView/PlaylistEditor';
   import Player from './PlayerView/Player';
-
-
+  
   export default {
     components: {
       Sidebar,
