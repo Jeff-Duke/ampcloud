@@ -19,7 +19,6 @@ const gimmeSongObject = (filePath) => {
         filePath,
       });
     }
-    console.log(track);
     PlayList.push(track);
     track = {};
   });
@@ -36,8 +35,7 @@ const gimmeSong = (filePath, callback) => {
   (err, data) => {
     if (err) { callback(err); }
     const encoded = dataurl.convert({ data, mimetype: 'audio/mp3' });
-    // callback(null, encoded);
-    console.log(encoded.length);
+    callback(null, encoded);
   });
 };
 
