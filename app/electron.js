@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const gimmeSong = global.gimmeSong = require('./gimme-song-url');
+const gimmeSongObject = require('./gimme-song-url');
 
 let mainWindow;
 let config = {};
@@ -65,7 +66,7 @@ const loadFile = exports.loadFile = (filePath, callback) => {
   gimmeSong(filePath, callback);
 };
 
-const openFile = exports.openFile = () => {
+const openFile = exports.openFile = (callback) => {
   const files = dialog.showOpenDialog({
     title: 'Open File',
     properties: [ 'openFile' ],
@@ -77,6 +78,6 @@ const openFile = exports.openFile = () => {
   if (!files) { return; }
 
   const filePath = files[0];
-  loadFile(filePath);
+  gimmeSongObject(filePath, callback);
 };
 

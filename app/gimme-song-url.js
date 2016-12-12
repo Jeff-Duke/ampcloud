@@ -5,8 +5,8 @@ const id3 = require('id3js');
 const mp3Duration = require('mp3-duration');
 const PlayList = require('./src/components/SidebarView/PlayList');
 
-const gimmeSong = (filePath, callback) => {
-  const track = {};
+const gimmeSongObject = (filePath) => {
+  let track = {};
   id3({ file: filePath, type: id3.OPEN_LOCAL }, (err, tags) => {
     if (err) { console.log(err); }
     if (tags) {
@@ -16,8 +16,12 @@ const gimmeSong = (filePath, callback) => {
         artist,
         album,
         track: tags.v1.track,
+        filePath,
       });
     }
+    console.log(track);
+    PlayList.push(track);
+    track = {};
   });
   mp3Duration(filePath, (err, duration) => {
     if (err) console.log(err.message);
@@ -25,15 +29,17 @@ const gimmeSong = (filePath, callback) => {
       duration,
     });
   });
+};
+
+const gimmeSong = (filePath, callback) => {
   fs.readFile(filePath,
   (err, data) => {
     if (err) { callback(err); }
     const encoded = dataurl.convert({ data, mimetype: 'audio/mp3' });
-    Object.assign(track, {
-      encoded,
-    });
-    PlayList.push(track);
+    // callback(null, encoded);
+    console.log(encoded.length);
   });
 };
 
 module.exports = gimmeSong;
+module.exports = gimmeSongObject;
