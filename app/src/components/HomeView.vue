@@ -20,33 +20,24 @@
 
 <template>
   <div class='wrapper'>
-  <section class='sidebar-container'>
-    <sidebar id='sidebar'
-      :artists='artists'
-      :index='index'
-      :addToPlaylist='addToPlaylist'
-    ></sidebar>
-  </section>
-  <section class='playlist-editor-container'>
-    <playlist-editor id='playlist-editor'
-      :playlistTracks='playlistTracks'
-      :removeTrack='removeTrack'
-    >
-    </playlist-editor>
-  </section>
-  <section>
-    <player
+    <section class='player-container'>
+      <player
       :updateCurrentPlaylist='updateCurrentPlaylist'
       :playlistTracks='playlistTracks'
-    >
-    </player>
-  </section>
+      >
+      </player>
+    </section>
+    <section class='playlist-editor-container'>
+      <playlist-editor id='playlist-editor'
+        :playlistTracks='playlistTracks'
+        :removeTrack='removeTrack'
+      >
+      </playlist-editor>
+    </section>
   </div>
 </template>
 
 <script>
-  import helpers from './SidebarView/helpers';
-  import Sidebar from './SidebarView/Sidebar';
   import PlaylistEditor from './PlaylistEditorView/PlaylistEditor';
   import Player from './PlayerView/Player';
   import { remote } from 'electron';
@@ -54,7 +45,6 @@
 
   export default {
     components: {
-      Sidebar,
       PlaylistEditor,
       Player,
     },
@@ -67,7 +57,6 @@
     data() {
       return {
         playlistTracks: [],
-        artists: helpers.artists,
       };
     },
     methods: {

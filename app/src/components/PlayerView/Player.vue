@@ -1,19 +1,45 @@
 <style>
 
+.audio-wrapper {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  background-color: grey;
+  height: 150px;
+  overflow: hidden;
+  position: fixed;
+  margin-top: 75px;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+#audio-player {
+  border-radius: 3px;
+  font-size: 20px;
+  outline: none;
+  padding: 6px 0;
+  text-indent: 15px;
+  width: 100;
+}
+
+.player-button {
+  margin: 5px 10px;
+}
 </style>
 
 <template>
-
-  <section>
-
+<div class='player-wrapper'>
+  <section class='audio-wrapper'>
     <audio id="audio-player" controls="controls" src="">
       <source src="" type="audio/mp3" />
     </audio>
-    <button @click='prevTrack'>prevTrack</button>
-    <button @click='nextTrack'>nextTrack</button>
-    <button @click='openFile'>OpenFile</button>
-
+    <button class='player-button' @click='prevTrack'>prevTrack</button>
+    <button class='player-button' @click='nextTrack'>nextTrack</button>
+    <button class='player-button' @click='openFile'>OpenFile</button>
   </section>
+</div>
 </template>
 
 <script>

@@ -23,8 +23,10 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 800,
-    width: 1200,
+    maxHeight: 800,
+    maxWidth: 800,
+    minHeight: 800,
+    minWidth: 800,
     webSecurity: false,
     experimentalFeatures: true
   });
