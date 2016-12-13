@@ -1,52 +1,42 @@
 <style scoped>
-
   .wrapper {
+    background-color: #413458;
+    color: #0ac501;
     display: flex;
-    margin-top: 8%;
-    width: 100vw;
-  }
-
-  .sidebar-container {
-    border-right: 1px solid black;
-    height: 100vh;
-    width: 275px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: Arial;
+    width: 800px;
   }
 
   .playlist-editor-container {
-    margin-left: 5%;
+    margin-left: 120px;
+    height: 100vh;
   }
 
 </style>
 
 <template>
   <div class='wrapper'>
-  <section class='sidebar-container'>
-    <sidebar id='sidebar'
-      :artists='artists'
-      :index='index'
-      :addToPlaylist='addToPlaylist'
-    ></sidebar>
-  </section>
-  <section class='playlist-editor-container'>
-    <playlist-editor id='playlist-editor'
-      :playlistTracks='playlistTracks'
-      :removeTrack='removeTrack'
-    >
-    </playlist-editor>
-  </section>
-  <section>
-    <player
+    <section class='player-container'>
+      <player
       :updateCurrentPlaylist='updateCurrentPlaylist'
       :playlistTracks='playlistTracks'
-    >
-    </player>
-  </section>
+      >
+      </player>
+    </section>
+    <section class='playlist-editor-container'>
+      <playlist-editor id='playlist-editor'
+        :playlistTracks='playlistTracks'
+        :removeTrack='removeTrack'
+      >
+      </playlist-editor>
+    </section>
   </div>
 </template>
 
 <script>
-  import helpers from './SidebarView/helpers';
-  import Sidebar from './SidebarView/Sidebar';
   import PlaylistEditor from './PlaylistEditorView/PlaylistEditor';
   import Player from './PlayerView/Player';
   import { remote } from 'electron';
@@ -54,7 +44,6 @@
 
   export default {
     components: {
-      Sidebar,
       PlaylistEditor,
       Player,
     },
@@ -67,7 +56,6 @@
     data() {
       return {
         playlistTracks: [],
-        artists: helpers.artists,
       };
     },
     methods: {

@@ -1,19 +1,94 @@
 <style>
+nav {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #202020;
+  height: 300px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+
+.player-wrapper {
+  align-items: center;
+  border: 7px solid #3b385e;
+  border-radius: 3px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #100f14;
+  height: 260px;
+  width: 765px;
+}
+
+.title {
+  margin-top: 0;
+  font-size: 40px;
+  text-align: center;
+}
+
+#audio-player {
+  border-radius: 3px;
+  font-size: 20px;
+  outline: none;
+  padding: 0;
+  text-indent: 15px;
+  width: 300px;
+}
+
+.player-button {
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.previous {
+  background: url("../../images/previous-track.png") no-repeat scroll 0 0 transparent;
+  border:none;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+
+.next {
+  background: url("../../images/next-track.png") no-repeat scroll 0 0 transparent;
+  border:none;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+
+.open {
+  background: url("../../images/sphere-search.png") no-repeat scroll 0 0 transparent;
+  border:none;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
 
 </style>
 
 <template>
-
-  <section>
-
+<nav>
+  <div class='player-wrapper'>
+    <h1 class='title'>AMPTRON</h1>
+  <section class='audio-wrapper'>
     <audio id="audio-player" controls="controls" src="">
       <source src="" type="audio/mp3" />
     </audio>
-    <button @click='prevTrack'>prevTrack</button>
-    <button @click='nextTrack'>nextTrack</button>
-    <button @click='openFile'>OpenFile</button>
-
   </section>
+  <section class='button-wrapper'>
+    <button class='player-button previous' @click='prevTrack'></button>
+    <button class='player-button next' @click='nextTrack'></button>
+    <button class='player-button open' @click='openFile'></button>
+  </section>
+  <div>
+</nav>
 </template>
 
 <script>
