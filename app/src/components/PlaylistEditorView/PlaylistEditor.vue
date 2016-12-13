@@ -1,18 +1,34 @@
 <style scoped>
+.playlist-wrapper {
+  background-color: #100f14;
+  border: 1px solid black;
+  height: 80%;
+  padding: 290px 0 0 0;
+  width: 555px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+
+}
 
 </style>
 
 <template>
-  <div>
-  <h1 class='title'>Your Playlist 💖</h1>
-  <ul>
-    <li v-for='(song, index) in playlistTracks'>
-      <b>Artist:</b> {{song.artist}} <b>Album:</b> {{song.album}}:
-      {{song.title}} -- {{renderDuration(song.duration)}}
-      <button @click='removeTrack(index)'>REMOVE</button>
-    </li>
-  </ul>
-</div>
+  <div class='playlist-wrapper'>
+    <section class='playlist'>
+    <ul>
+      <li v-for='(song, index) in playlistTracks'>
+        <button @click='removeTrack(index)'>X</button>
+        <b>Artist:</b> {{song.artist}} -
+        {{song.title}} {{renderDuration(song.duration)}}
+      </li>
+    </ul>
+  </section>
+  </div>
 </template>
 
 <script>

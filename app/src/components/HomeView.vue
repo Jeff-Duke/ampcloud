@@ -1,18 +1,15 @@
 <style scoped>
-
   .wrapper {
+    background-color: #413458;
+    color: #0ac501;
     display: flex;
-    width: 100vw;
-  }
-
-  .sidebar-container {
-    border-right: 1px solid black;
-    height: 100vh;
-    width: 275px;
+    font-family: Arial;
+    width: 800px;
   }
 
   .playlist-editor-container {
-    margin-left: 5%;
+    margin-left: 115px;
+    height: 800px;
   }
 
 </style>

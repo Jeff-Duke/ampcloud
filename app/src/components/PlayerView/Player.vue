@@ -3,7 +3,7 @@ nav {
   align-items: center;
   justify-content: center;
   display: flex;
-  background-color: grey;
+  background-color: #202020;
   height: 300px;
   overflow: hidden;
   position: fixed;
@@ -13,24 +13,32 @@ nav {
   z-index: 1;
 }
 
+
 .player-wrapper {
   align-items: center;
+  border: 7px solid #3b385e;
+  border-radius: 3px;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  background-color: black;
-  height: 270px;
-  width: 770px;
+  background-color: #100f14;
+  height: 260px;
+  width: 765px;
 }
 
+.title {
+  margin-top: 0;
+  font-size: 40px;
+  text-align: center;
+}
 
 #audio-player {
   border-radius: 3px;
   font-size: 20px;
   outline: none;
-  padding: 6px 0;
+  padding: 0;
   text-indent: 15px;
-  width: 100;
+  width: 300px;
 }
 
 .player-button {
@@ -43,6 +51,7 @@ nav {
 <template>
 <nav>
   <div class='player-wrapper'>
+    <h1 class='title'>AMPTRON</h1>
   <section class='audio-wrapper'>
     <audio id="audio-player" controls="controls" src="">
       <source src="" type="audio/mp3" />
