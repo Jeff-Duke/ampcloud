@@ -6,13 +6,11 @@
 
   <section>
 
-    <button @click='prevTrack'>prevTrack</button>
     <audio id="audio-player" controls="controls" src="">
       <source src="" type="audio/mp3" />
     </audio>
-    <input type="file" id="file" />
+    <button @click='prevTrack'>prevTrack</button>
     <button @click='nextTrack'>nextTrack</button>
-    <button @click='loadTrack'>LoadTrack</button>
     <button @click='openFile'>OpenFile</button>
 
   </section>
@@ -31,6 +29,11 @@ export default {
       currentSongIndex: 0,
     };
   },
+  mounted() {
+    if (this.playlistTracks.length) {
+      this.loadTrack();
+    }
+  },
   computed: {
     maxCount() {
       return this.playlistTracks.length - 1;
@@ -45,18 +48,27 @@ export default {
     nextTrack() {
       if (this.currentSongIndex === this.maxCount) return null;
       this.currentSongIndex += 1;
-      return this.loadTrack();
+      this.loadTrack();
+      return this.playTrack();
     },
     prevTrack() {
       if (this.currentSongIndex === 0) return null;
       this.currentSongIndex -= 1;
-      return this.loadTrack();
+      this.loadTrack();
+      return this.playTrack();
+    },
+    playTrack() {
+      document.getElementById('audio-player').autoplay = true;
     },
     loadTrack() {
       const filePath = this.playlistTracks[this.currentSongIndex].filePath;
+      const audioPlayer = document.getElementById('audio-player');
       gimmeSong(filePath)
         .then(song => {
-          document.getElementById('audio-player').src = song;
+          audioPlayer.src = song;
+          audioPlayer.onended = () => {
+            this.nextTrack();
+          }
           return song;
         })
         .catch(err => err);
