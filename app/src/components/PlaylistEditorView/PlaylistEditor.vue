@@ -1,10 +1,18 @@
 <style scoped>
 .playlist-wrapper {
   background-color: #100f14;
-  border: 1px solid black;
-  height: 80%;
+  border-right: 4px solid #e0cd3c;
+  border-left: 4px solid #e0cd3c;
+  height: 488px;
   padding: 290px 0 0 0;
   width: 555px;
+}
+
+.playlist {
+  border-right: 3px solid #fff6ce;
+  border-left: 3px solid #fff6ce;
+  overflow: auto;
+  height: 487px;
 }
 
 ul {
@@ -23,7 +31,7 @@ li {
     <ul>
       <li v-for='(song, index) in playlistTracks'>
         <button @click='removeTrack(index)'>X</button>
-        <b>Artist:</b> {{song.artist}} -
+        {{song.artist}} -
         {{song.title}} {{renderDuration(song.duration)}}
       </li>
     </ul>

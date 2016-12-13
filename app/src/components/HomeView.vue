@@ -3,13 +3,16 @@
     background-color: #413458;
     color: #0ac501;
     display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
     font-family: Arial;
     width: 800px;
   }
 
   .playlist-editor-container {
-    margin-left: 115px;
-    height: 800px;
+    margin-left: 120px;
+    height: 100vh;
   }
 
 </style>
