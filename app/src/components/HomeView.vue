@@ -30,11 +30,16 @@
   <section class='playlist-editor-container'>
     <playlist-editor id='playlist-editor'
       :playlistTracks='playlistTracks'
+      :removeTrack='removeTrack'
     >
     </playlist-editor>
   </section>
   <section>
-    <player></player>
+    <player
+      :updateCurrentPlaylist='updateCurrentPlaylist'
+      :playlistTracks='playlistTracks'
+    >
+    </player>
   </section>
   </div>
 </template>
@@ -53,9 +58,15 @@
       PlaylistEditor,
       Player,
     },
+    created() {
+      const localData = localStorage.playlist;
+      if (localData) return this.playlistTracks = JSON.parse(localData);
+      localStorage.playlist = JSON.stringify(this.playlistTracks);
+      return null;
+    },
     data() {
       return {
-        playlistTracks: PlayList,
+        playlistTracks: [],
         artists: helpers.artists,
       };
     },
@@ -71,6 +82,14 @@
           track };
 
         this.playlistTracks = [...this.playlistTracks, song];
+      },
+      updateCurrentPlaylist(newTrack) {
+        this.playlistTracks = [...this.playlistTracks, newTrack];
+        localStorage.playlist = JSON.stringify(this.playlistTracks)
+      },
+      removeTrack(index) {
+        this.playlistTracks = this.playlistTracks.filter((e, i) => i !== index);
+        localStorage.playlist = JSON.stringify(this.playlistTracks);
       },
     },
     name: 'home-page',

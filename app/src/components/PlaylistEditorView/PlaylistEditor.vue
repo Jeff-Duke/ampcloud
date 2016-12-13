@@ -6,9 +6,10 @@
   <div>
   <h1 class='title'>Your Playlist 💖</h1>
   <ul>
-    <li v-for='song in playlistTracks'>
+    <li v-for='(song, index) in playlistTracks'>
       <b>Artist:</b> {{song.artist}} <b>Album:</b> {{song.album}}:
       {{song.title}} -- {{renderDuration(song.duration)}}
+      <button @click='removeTrack(index)'>REMOVE</button>
     </li>
   </ul>
 </div>
@@ -19,7 +20,7 @@
 export default {
   components: {
   },
-  props: ['playlistTracks'],
+  props: ['playlistTracks', 'removeTrack'],
   data() {
     return {
     };
