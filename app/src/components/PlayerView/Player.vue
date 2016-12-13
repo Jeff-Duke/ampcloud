@@ -46,6 +46,31 @@ nav {
   margin-right: 10px;
   margin-left: 10px;
 }
+
+.previous {
+  background: url("../../images/previous-track.png") no-repeat scroll 0 0 transparent;
+  border:none;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+
+.next {
+  background: url("../../images/next-track.png") no-repeat scroll 0 0 transparent;
+  border:none;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+
+.open {
+  background: url("../../images/sphere-search.png") no-repeat scroll 0 0 transparent;
+  border:none;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+
 </style>
 
 <template>
@@ -58,9 +83,9 @@ nav {
     </audio>
   </section>
   <section class='button-wrapper'>
-    <button class='player-button' @click='prevTrack'>prevTrack</button>
-    <button class='player-button' @click='nextTrack'>nextTrack</button>
-    <button class='player-button' @click='openFile'>OpenFile</button>
+    <button class='player-button previous' @click='prevTrack'></button>
+    <button class='player-button next' @click='nextTrack'></button>
+    <button class='player-button open' @click='openFile'></button>
   </section>
   <div>
 </nav>
