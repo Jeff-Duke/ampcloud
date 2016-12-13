@@ -44,9 +44,7 @@ export default {
     },
     nextTrack() {
       if (this.currentSongIndex === this.maxCount) return null;
-      console.log(this.currentSongIndex);
       this.currentSongIndex += 1;
-      console.log(this.currentSongIndex);
       return this.loadTrack();
     },
     prevTrack() {
