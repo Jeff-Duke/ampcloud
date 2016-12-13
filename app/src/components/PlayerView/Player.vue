@@ -117,7 +117,9 @@ export default {
   methods: {
     openFile() {
       mainProcess.openFile().then((newTrack) => {
+        if (newTrack) {
         this.updateCurrentPlaylist(newTrack);
+        }
       });
     },
     nextTrack() {
