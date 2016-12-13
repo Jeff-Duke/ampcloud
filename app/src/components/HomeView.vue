@@ -2,7 +2,6 @@
 
   .wrapper {
     display: flex;
-    margin-top: 8%;
     width: 100vw;
   }
 
