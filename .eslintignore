@@ -5,5 +5,4 @@ test/unit/coverage/**
 test/unit/*.js
 test/e2e/*.js
 app/src/components/HomeView.vue
-
-
+app/src/components/PlayerView/Player.vue

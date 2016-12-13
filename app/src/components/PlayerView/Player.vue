@@ -22,20 +22,38 @@
 import { remote } from 'electron';
 import path from 'path';
 
-const { gimmeSong, PlayList } = remote.getGlobal('gimmeSong');
+const { gimmeSong } = remote.getGlobal('gimmeSong');
 const mainProcess = remote.require(path.join(process.cwd(), 'app/electron.js'));
 export default {
+  props: ['updateCurrentPlaylist', 'playlistTracks'],
+  data() {
+    return {
+      currentSongIndex: 0,
+    };
+  },
+  computed: {
+    maxCount() {
+      return this.playlistTracks.length - 1;
+    },
+  },
   methods: {
     openFile() {
-      mainProcess.openFile();
+      mainProcess.openFile().then((newTrack) => {
+        this.updateCurrentPlaylist(newTrack);
+      });
     },
     nextTrack() {
+      if (this.currentSongIndex === this.maxCount) return null;
+      this.currentSongIndex += 1;
+      return this.loadTrack();
     },
     prevTrack() {
+      if (this.currentSongIndex === 0) return null;
+      this.currentSongIndex -= 1;
+      return this.loadTrack();
     },
-    loadTrack(index) {
-      index = 0;
-      const filePath = PlayList[index].filePath;
+    loadTrack() {
+      const filePath = this.playlistTracks[this.currentSongIndex].filePath;
       gimmeSong(filePath)
         .then(song => {
           document.getElementById('audio-player').src = song;

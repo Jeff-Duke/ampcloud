@@ -1,4 +1,3 @@
-'use strict';
 const dataurl = require('dataurl');
 const fs = require('fs');
 const id3 = require('id3js');
@@ -6,17 +5,6 @@ const mp3Duration = require('mp3-duration');
 const EventEmitter = require('events').EventEmitter;
 
 const server = new EventEmitter();
-
-const PlayList = [
-  {
-    duration: 177.162,
-    filePath: '/Users/Duke/Music/The_XX-XX-2009-SiRE/02-the_xx-vcr.mp3',
-    title: 'VCR',
-    album: 'XX',
-    artist: 'The XX',
-    track: 2,
-  },
-];
 
 const gimmeDuration = (filePath) => {
   const durationPromise = new Promise((resolve, reject) => {
@@ -47,14 +35,9 @@ const gimmeTags = (track) => {
 
 const gimmeSongObject = (filePath) => {
   const track = {};
-  gimmeDuration(filePath)
+  return gimmeDuration(filePath)
   .then((duration) => Object.assign(track, { duration, filePath }))
-  .then((track) => gimmeTags(track))
-  .then((track) => {
-    PlayList.push(track);
-    server.emit('Playlist Changed', PlayList);
-    console.log('New Playlist!', PlayList);
-  });
+  .then((track) => gimmeTags(track));
 };
 
 const gimmeSong = (filePath) => {
@@ -67,4 +50,4 @@ const gimmeSong = (filePath) => {
   return songPromise;
 };
 
-module.exports = { gimmeSong, gimmeSongObject, PlayList };
+module.exports = { gimmeSong, gimmeSongObject };

@@ -44,7 +44,7 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-  
+
   console.log('mainWindow opened');
 }
 
@@ -62,8 +62,7 @@ app.on('activate', () => {
   }
 });
 
-
-const openFile = exports.openFile = (callback) => {
+const openFile = exports.openFile = () => {
   const files = dialog.showOpenDialog({
     title: 'Open File',
     properties: [ 'openFile' ],
@@ -75,6 +74,5 @@ const openFile = exports.openFile = (callback) => {
   if (!files) { return; }
 
   const filePath = files[0];
-  gimmeSongObject(filePath);
+  return gimmeSongObject(filePath);
 };
-
