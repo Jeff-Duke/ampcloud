@@ -23,7 +23,7 @@ nav {
   flex-direction: column;
   background-color: #100f14;
   height: 260px;
-  width: 765px;
+  width: 500px;
 }
 
 .title {
@@ -94,9 +94,11 @@ nav {
 <script>
 import { remote } from 'electron';
 import path from 'path';
+const isDev = () => process.env.NODE_ENV === 'development';
+const directory = isDev() ? process.cwd() : process.env.APP_PATH;
 
 const { gimmeSong } = remote.getGlobal('gimmeSong');
-const mainProcess = remote.require(path.join(process.cwd(), 'app/electron.js'));
+const mainProcess = remote.require(path.join(directory, '/electron.js'));
 export default {
   props: ['updateCurrentPlaylist', 'playlistTracks'],
   data() {

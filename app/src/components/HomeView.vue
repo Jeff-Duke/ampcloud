@@ -7,11 +7,11 @@
     top: 0;
     left: 0;
     font-family: Arial;
-    width: 500px;
+    width: 485px;
+    height: 100vh;
   }
 
   .playlist-editor-container {
-    /*margin-left: 120px;*/
     height: 100vh;
   }
 

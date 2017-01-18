@@ -5,15 +5,14 @@
   border-left: 4px solid #e0cd3c;
   height: 488px;
   padding: 290px 0 0 0;
-  width: 488px;
+  width: 492px;
 }
 
 .playlist {
   border-right: 3px solid #fff6ce;
   border-left: 3px solid #fff6ce;
   overflow-x: auto;
-  height: 487px;
-  padding: 5px;
+  height: 488px;
 }
 
 .removeTrack {
@@ -26,11 +25,13 @@
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
   list-style: none;
 }
 
 li {
-  margin: 10px;
+  margin: 7px;
 }
 
 </style>
