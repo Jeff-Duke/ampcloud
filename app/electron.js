@@ -32,7 +32,6 @@ function createWindow () {
   });
 
   mainWindow.loadURL(config.url);
-
   if (process.env.NODE_ENV === 'development') {
     BrowserWindow.addDevToolsExtension(path.join(__dirname, '../node_modules/devtron'));
 
@@ -78,3 +77,5 @@ const openFile = exports.openFile = () => {
   const filePath = files[0];
   return gimmeSongObject(filePath);
 };
+
+process.env['APP_PATH'] = app.getAppPath();

@@ -5,7 +5,7 @@
   border-left: 4px solid #e0cd3c;
   height: 488px;
   padding: 290px 0 0 0;
-  width: 477px;
+  width: 492px;
 }
 
 .playlist {
