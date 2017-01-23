@@ -4,8 +4,8 @@ const { app, BrowserWindow, dialog} = require('electron');
 const fs = require('fs');
 const path = require('path');
 
-const gimmeSong = global.gimmeSong = require('./gimme-song-url');
-const { gimmeSongObject } = require('./gimme-song-url');
+const createSongUri = global.createSongUri = require('electron-audio-conversion');
+const { createSongObject } = require('electron-audio-conversion');
 
 let mainWindow;
 let config = {};
@@ -75,7 +75,7 @@ const openFile = exports.openFile = () => {
   if (!files) { return; }
 
   const filePath = files[0];
-  return gimmeSongObject(filePath);
+  return createSongObject(filePath);
 };
 
 process.env['APP_PATH'] = app.getAppPath();
