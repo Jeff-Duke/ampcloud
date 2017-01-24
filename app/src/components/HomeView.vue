@@ -40,7 +40,6 @@
   import PlaylistEditor from './PlaylistEditorView/PlaylistEditor';
   import Player from './PlayerView/Player';
   import { remote } from 'electron';
-  const { PlayList } = remote.getGlobal('gimmeSong');
 
   export default {
     components: {
