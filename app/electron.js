@@ -79,6 +79,6 @@ const openFile = exports.openFile = () => {
 
 const generateUri = exports.generateUri = (filePath, mimeType) => {
   return createSongUri(filePath, mimeType);
-}
+};
 
 process.env['APP_PATH'] = app.getAppPath();
