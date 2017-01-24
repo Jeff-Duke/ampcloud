@@ -96,9 +96,8 @@ import { remote } from 'electron';
 import path from 'path';
 const isDev = () => process.env.NODE_ENV === 'development';
 const directory = isDev() ? process.cwd() : process.env.APP_PATH;
-
-const { createSongUri } = remote.getGlobal('createSongUri');
 const mainProcess = remote.require(path.join(directory, '/app/electron.js'));
+
 export default {
   props: ['updateCurrentPlaylist', 'playlistTracks'],
   data() {
@@ -142,7 +141,7 @@ export default {
     loadTrack() {
       const filePath = this.playlistTracks[this.currentSongIndex].filePath;
       const audioPlayer = document.getElementById('audio-player');
-      createSongUri(filePath, 'audio/mp3')
+      mainProcess.generateUri(filePath, 'audio/mp3')
         .then(song => {
           audioPlayer.src = song;
           audioPlayer.onended = () => {

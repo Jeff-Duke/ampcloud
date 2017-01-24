@@ -4,8 +4,7 @@ const { app, BrowserWindow, dialog} = require('electron');
 const fs = require('fs');
 const path = require('path');
 
-const createSongUri = global.createSongUri = require('electron-audio-conversion');
-const { createSongObject } = require('electron-audio-conversion');
+const { createSongObject, createSongUri } = require('electron-audio-conversion');
 
 let mainWindow;
 let config = {};
@@ -77,5 +76,9 @@ const openFile = exports.openFile = () => {
   const filePath = files[0];
   return createSongObject(filePath);
 };
+
+const generateUri = exports.generateUri = (filePath, mimeType) => {
+  return createSongUri(filePath, mimeType);
+}
 
 process.env['APP_PATH'] = app.getAppPath();
